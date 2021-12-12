@@ -2,8 +2,9 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const mysql = require('mysql2')
+app.use(express.json())
 
-PORT = 9001
+PORT = 9000
 
 app.use(morgan('dev')) 
 
@@ -24,9 +25,15 @@ app.get('/avengers', (req, res) => {
     })
 })
 
-
-
-
+app.post('/avengers', (req, res) => {
+    let myQuery = `INSERT INTO avengers (name, current, appearances) value (?, ?, ?)`;
+    myDb.query(myQuery, [req.body.name, req.body.current, req.body.appearances], (err, result) => {
+        if (err){
+            throw err;
+        }
+        res.send(result)
+    })
+})
 
 app.use((err, req, res, next) => {
     //if(err.name === 'Unauthorized error'){
