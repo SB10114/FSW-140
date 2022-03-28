@@ -12,6 +12,7 @@ const myDb = mysql.createConnection({
     user: 'root',
     password: 'Missycat23!',
     database: 'avengers'
+    
 })
 
 app.get('/avengers', (req, res) => {

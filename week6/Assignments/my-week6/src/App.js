@@ -22,6 +22,7 @@ export default function App() {
           <h1>{item.name}</h1>
           <h3>Current character: {item.current}</h3>
           <h3>Number of appearances: {item.appearances}</h3>
+
         </div>
       })}
     </>
