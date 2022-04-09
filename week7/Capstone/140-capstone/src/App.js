@@ -1,6 +1,9 @@
 import './App.css';
 import axios from "axios";
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import FoodRender from './Components/FoodRender';
+import AddFood from './Components/AddFood';
+import NavBar from './Components/NavBar';
 
 const baseURL = "/avengers";
 
@@ -15,8 +18,8 @@ export default function App() {
 
   //console.log('post: ', post)
 
-  // const [book, setBook] = useState([])
-  // const [query, setQuery] = useState({})
+  const [food, setFood] = useState([])
+  const [query, setQuery] = useState({})
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -69,8 +72,9 @@ export default function App() {
   
   return (
     <div className = 'app'>
+      <NavBar/>
       <div>
-        <addFood submit={addFood} />
+        <AddFood submit={addFood} />
     </div>
      <form className = "queryForm">
        <input  name="query" onChange={handleChange} placeholder= "Enter # in Food:"></input>
@@ -94,5 +98,3 @@ export default function App() {
     </div>
     );
   }
-  
-  export default App;

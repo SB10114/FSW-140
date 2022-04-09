@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import NavBar from './NavBar'
 
 function AddFood(props) {
 
@@ -30,6 +31,7 @@ function AddFood(props) {
     return (
        
         <form className = "addForm" onSubmit={handleSubmit}>
+            <NavBar/>
           <span>
             <input 
                 type="text"

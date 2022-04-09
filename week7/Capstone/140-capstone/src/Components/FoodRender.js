@@ -1,8 +1,9 @@
 import { useState } from "react";
 import DeleteFoods from "./DeleteFoods";
 import UpdateFoods from './UpdateFoods';
+import NavBar from "./NavBar";
 
-function FoodRender({MenuItems, artist, eatAll, deleteFoods, updateFoods, numberOfFoods, menuItems, id}) {
+function FoodRender({MenuItems, artist, eatAll, FoodsTitle, deleteFoods, updateFoods, numberOfFoods, menuItems, id}) {
 
 
     const [editMode, setEditMode] = useState(false)
@@ -14,7 +15,7 @@ function FoodRender({MenuItems, artist, eatAll, deleteFoods, updateFoods, number
 
     return (
         <div className = "inputs">
-
+          <NavBar/>
           { !editMode ?
             <>
               <p> Foods: {MenuItems} </p>
@@ -42,7 +43,7 @@ function FoodRender({MenuItems, artist, eatAll, deleteFoods, updateFoods, number
               />
               <button onClick={() => setEdit(false)}>Cancel</button>
             </>
-
+            
           }
 
         </div>
