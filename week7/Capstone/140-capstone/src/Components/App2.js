@@ -9,16 +9,16 @@ export default function App2(){
         <div>
         <Routes>
             <Route
-                path= '/HomePage'
-                component = {App}
+                path= '/' exact
+                element = {<App/>}
                 />
                 <Route
-                path= '/AddFood'
-                component = {AddFood}
+                path= '/AddFood' exact
+                element = {<AddFood/>}
                 />
                 <Route
-                path= '/FoodRender'
-                component = {FoodRender}
+                path= '/FoodRender' exact
+                element = {<FoodRender/>}
                 />
             </Routes>
       </div>

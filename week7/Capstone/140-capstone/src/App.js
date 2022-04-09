@@ -73,6 +73,7 @@ export default function App() {
   return (
     <div className = 'app'>
       <NavBar/>
+      <h1>Welcome to the Retribution Cafe!</h1>
       <div>
         <AddFood submit={addFood} />
     </div>
