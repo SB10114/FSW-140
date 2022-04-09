@@ -2,11 +2,9 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const mysql = require('mysql2')
-app.use(express.json())
 
 PORT = 9000
 
-app.use(morgan('dev')) 
 
 const myDb = mysql.createConnection({
     host: 'localhost',
@@ -14,6 +12,17 @@ const myDb = mysql.createConnection({
     password: 'Missycat23!',
     database: 'avengers'
 })
+
+app.use(express())//.json??
+app.use(morgan('dev'))
+
+myDb.connect((err)=> {
+    if (err){
+        throw err;
+    }
+    console.log("db connected")
+}) 
+
 
 app.get('/avengers', (req, res) => {
     let myQuery = "SELECT * FROM avengers";
