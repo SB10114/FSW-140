@@ -13,7 +13,7 @@ const myDb = mysql.createConnection({
     database: 'avengers'
 })
 
-app.use(express())//.json??
+app.use(express.json())//.json??
 app.use(morgan('dev'))
 
 myDb.connect((err)=> {
@@ -34,7 +34,21 @@ app.get('/avengers', (req, res) => {
     })
 })
 
+
+app.get('/avengers/search/avengers_ID', (req, res) => {
+    console.log(req.query)
+    let myQuery = `SELECT * FROM avengers WHERE avenger_ID = "${req.query.avengers_ID}"`;
+    myDb.query(myQuery, (err, result) => {
+        if (err){
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    })
+})
+
 app.post('/avengers', (req, res) => {
+    console.log(req.body)
     let myQuery = `INSERT INTO avengers (name, current, appearances) value (?, ?, ?)`;
     myDb.query(myQuery, [req.body.name, req.body.current, req.body.appearances], (err, result) => {
         if (err){

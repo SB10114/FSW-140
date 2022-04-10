@@ -4,11 +4,11 @@ function UpdateFood(props) {
     const [id, setId] = useState(props.id)
 
     const initInputs = {
-        FoodTitle: props.FoodTitle || '',
-        artist: props.artist || '',
-        numberOfFoods: props.numberOfFoods || '',
-        eatAll: props.eatAll || '',
-        menuItems: props.menuItems || '',
+        name: props.name || '',
+        year: props.year || '',
+        appearances: props.appearances || '',
+        current: props.current || '',
+        yearsSinceJoining: props.yearsSinceJoining || '',
      }
     
     const [inputs, setInputs] = useState(initInputs)
@@ -32,51 +32,45 @@ function UpdateFood(props) {
             <h1>
                 {inputs.foodTitle}
             </h1>
-            <p>
             <input 
                 type="text"
-                name="foodTitle"
-                value={inputs.foodTitle}
+                name="name"
+                value={inputs.name}
                 onChange={handleChange}
-                placeholder="Enter food Title:"
+                placeholder="Enter Food Title:"
                 />
-                </p>
-            <p>
+                
             <input 
                 type="text"
-                name="artist"
-                value={inputs.artist}
+                name="appearances"
+                value={inputs.appearances}
                 onChange={handleChange}
-                placeholder="Enter food artist:"
+                placeholder="Enter number of pieces:"
                 />
-                </p>
-            <p>
+               
             <input 
                 type="text"
-                name="numberOfFoods"
-                value={inputs.numberOfFoods}
+                name="year"
+                value={inputs.year}
                 onChange={handleChange}
-                placeholder="Number of pieces:"
+                placeholder="Added in year: "
                 />
-                </p>
-            <p>
+
             <input 
                 type="text"
-                name="eatAll"
-                value={inputs.eatAll}
+                name="current"
+                value={inputs.current}
                 onChange={handleChange}
-                placeholder="Completed meal:"
+                placeholder="Current menu item? "
                 />
-                </p>
-            <p>
-            <input className = "menuStyles"
+                
+            <input 
                 type="text"
-                name="menuItems"
-                value={inputs.menuItems}
+                name="yearsSinceJoining"
+                value={inputs.yearsSinceJoining}
                 onChange={handleChange}
                 placeholder="Menu Items: "
                 />
-                </p>
         <button>Update</button>
     </form>
     )

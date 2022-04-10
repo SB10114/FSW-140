@@ -33,25 +33,31 @@ export default function Home() {
       .catch(err => console.log(err))
   }
 
-  function getOneFood() {
-    axios.get(`/foodType/search/numberOfFoods?numberOfFoods=${query.query}`)
-      .then(res => {setFood(res.data)})
+  function getOneFood(e) {
+    var id= query.query
+    if(query.query){e.preventDefault()}
+    else{id = e}
+    console.log(id)
+    axios.get(`/avengers/search/avengers_ID?avengers_ID=${id}`)
+      .then(res => {console.log(res.data)
+        setFood(res.data)})
       .catch(err => console.log(err))
   }
 
   function addFood(updates) {
-    updates.readAll = (updates.readAll === "true" ? true : false)  
-
-    axios.post(`/foodType`, updates)
-    //.then(res => setFood())
+    // updates.readAll = (updates.readAll === "true" ? true : false)  
+console.log(updates)
+    axios.post(`/avengers`, updates)
     .then(res => {
-      setFood(prevFoods => [...prevFoods, res.data])
+      console.log(food.length)
+      //setQuery({query: 178})
+      getOneFood(food.length)
     })
     .catch(err => console.log(err))
   }
 
   function deleteFood(id) {
-    axios.delete(`/foodType/${id}`)
+    axios.delete(`/avengers/${id}`)
     .then(res => getFood())
     .catch(err => console.log(err))
   }
@@ -59,7 +65,7 @@ export default function Home() {
   function updateFood(id, updates) {
     updates.readAll = (updates.readAll === "true" ? true : false) 
    
-    axios.put(`/foodType/${id}`, updates)
+    axios.put(`/avengers/${id}`, updates)
     .then(res => getFood())
     .catch(err => console.log(err))
   }
@@ -81,7 +87,7 @@ export default function Home() {
      </form>
     <div>
         {food.map((foods, index) =>{ 
-          console.log(foods)
+          // console.log(foods)
         return (<FoodRender
             key={index}
             FoodsTitle = {foods.name}
