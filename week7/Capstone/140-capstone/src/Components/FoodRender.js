@@ -1,9 +1,9 @@
 import { useState } from "react";
 import DeleteFoods from "./DeleteFoods";
 import UpdateFoods from './UpdateFoods';
-import NavBar from "./NavBar";
 
-function FoodRender({MenuItems, artist, eatAll, FoodsTitle, deleteFoods, updateFoods, numberOfFoods, menuItems, id}) {
+
+function FoodRender({menuItems, created, eatAll, FoodsTitle, deleteFoods, updateFoods, number, id}) {
 
 
     const [editMode, setEditMode] = useState(false)
@@ -14,14 +14,13 @@ function FoodRender({MenuItems, artist, eatAll, FoodsTitle, deleteFoods, updateF
 
 
     return (
-        <div className = "inputs">
-          <NavBar/>
+        <div className = "rendering">
           { !editMode ?
             <>
-              <p> Foods: {MenuItems} </p>
-              <p> Artist: {artist} </p>
-              <p> Eat: {eatAll ? 'true' : 'false'}</p>
-              <p> # of Foods: {numberOfFoods} </p>
+              <p> Foods: {FoodsTitle} </p>
+              <p> created: {created} </p>
+              <p> Eat: {eatAll === 'YES' ? 'true' : 'false'}</p>
+              <p> # of Foods: {number} </p>
               <p> Menu Items: {menuItems} </p>
               <p> id = {id} </p>
 
@@ -32,14 +31,14 @@ function FoodRender({MenuItems, artist, eatAll, FoodsTitle, deleteFoods, updateF
             :
             <>
               <UpdateFoods 
-                id = {id} 
+                avenger_ID = {id} 
                 submit = {updateFoods} 
                 edit = {setEdit}
-                FoodsTitle={FoodsTitle}
-                artist = {artist}
-                eatAll = {eatAll}
-                numberOfFoods = {numberOfFoods}
-                menuItems = {menuItems}
+                name={FoodsTitle}
+                year = {created}
+                current = {eatAll}
+                appearances = {number}
+                yearsSinceJoining = {menuItems}
               />
               <button onClick={() => setEdit(false)}>Cancel</button>
             </>

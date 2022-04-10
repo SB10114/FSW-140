@@ -3,11 +3,10 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import FoodRender from './Components/FoodRender';
 import AddFood from './Components/AddFood';
-import NavBar from './Components/NavBar';
 
 const baseURL = "/avengers";
 
-export default function App() {
+export default function Home() {
   const [post, setPost] = React.useState([]);
 
   React.useEffect(() => {
@@ -27,7 +26,7 @@ export default function App() {
 }
 
   function getFood() {
-    axios.get('/foodType')
+    axios.get('/avengers')
       .then(res => {setFood(res.data)
         console.log(res.data)
       })
@@ -72,7 +71,6 @@ export default function App() {
   
   return (
     <div className = 'app'>
-      <NavBar/>
       <h1>Welcome to the Retribution Cafe!</h1>
       <div>
         <AddFood submit={addFood} />
@@ -82,19 +80,20 @@ export default function App() {
        <button onClick={getOneFood}>Search by #</button>
      </form>
     <div>
-        {food.map((foods, index) => 
-        <FoodRender 
+        {food.map((foods, index) =>{ 
+          console.log(foods)
+        return (<FoodRender
             key={index}
-            FoodTitle = {foods.FoodTitle}
-            author = {foods.artist}
-            readAll = {foods.eatAll}
-            numberOffoods = {foods.numberOfFoods}
-            foodTitles = {foods.foodTitles}
-            id = {foods._id} 
+            FoodsTitle = {foods.name}
+            created = {foods.year}
+            eatAll = {foods.current}
+            number = {foods.appearances}
+            menuItems = {foods.yearsSinceJoining}
+            id = {foods.avenger_ID} 
             updateFood = {updateFood}
             deleteFood = {deleteFood} 
             />
-        )}
+         ) } )}
       </div>
     </div>
     );

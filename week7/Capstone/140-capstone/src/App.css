@@ -1,5 +1,8 @@
 body {
-    background-color: aquamarine;
+    background-color: rgb(131, 131, 131);
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0ncMZ5u4EFiFh2GHQaKi5qgs5pNDsptdMeA&usqp=CAU');
+    background-position: no-repeat, repeat;
+    background-blend-mode: lighten;
 }
 
 h1, h3 {
@@ -9,10 +12,20 @@ h1, h3 {
 .display {
     border: solid black 5px;
 }
-.navbar {
+/* .navbar {
+
+} */
+
+.rendering{
+    color: rgb(28, 28, 49);
+    border-style: solid;
+    border-bottom: 10cm;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: xx-large;
+    text-shadow: 2px 2px white;
     
 }
-
 
 
 
